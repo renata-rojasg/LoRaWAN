@@ -3,7 +3,6 @@ library(readr)
 library(xts)
 library(lmtest)
 library(forecast)
-library(xtable)
 ######################
 ## Data preparation ##
 ######################
@@ -52,8 +51,8 @@ rownames(lower)<-colnames(data[,c(2:12)])
 
 correlation8<-na.omit(data[,c(2:5,13)])
 mcor8<- psych::corr.test(correlation8)
-results08<-t(as.matrix(paste0(round(mcor2$r[5,1:4],3)," (",
-       round(mcor2$p[5,1:4],3),")"),ncol=4))
+results08<-t(as.matrix(paste0(round(mcor8$r[5,1:4],3)," (",
+       round(mcor8$p[5,1:4],3),")"),ncol=4))
 rownames(results08)<-c("RSSI_08")
 
 table3<-rbind(lower,results08)
